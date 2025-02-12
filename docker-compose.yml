@@ -1,0 +1,14 @@
+services:
+  api:
+    container_name: api
+    build: ./
+    restart: always
+    volumes:
+    # Gallery API content
+      - ./:/api/
+    # Nginx Sockets access
+      # - type: bind
+      #   source: $USER/dockers/sockets/
+      #   target: /api/sockets
+    ports:
+      - 3199:3199
