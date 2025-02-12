@@ -22,3 +22,6 @@ O dispositivo envia uma imagem para a rota '__/api/upload/__' e no cabeçalho da
 - GET `/api/images/` \
 O servidor responde com um JSON. Uma chave 'dirs' onde o valor é uma lista de diratórios dessa pasta. Copie o nome de uma pasta e adicione ao endereço atual, repita até que seja retornado algum arquivo. Por fim, copie o nome de um arquivo, adicione ao endereço atual e remova a rota '__/api/__' do endereço, para acessar o arquivo.
 > Site e App móvel pendente
+
+Visite o projeto: http://marcosvianadev.ddns.net:3199/api/images/
+
