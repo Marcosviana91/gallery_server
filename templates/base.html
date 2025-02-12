@@ -50,10 +50,46 @@
         </ul>
     </nav>
     {% block 'body' %}{% endblock %}
-    {% if message %}
-    <div class="alert alert-warning position-absolute bottom-50 w-100" role="alert">
-        {{message}}
+    {% if messages or warnings or successes %}
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        {% for msg in messages %}
+        <div class="toast messageToast bg-primary-subtle" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-primary justify-content-end">
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body text-primary">
+                {{msg}}
+            </div>
+        </div>
+        {% endfor %}
+        {% for msg in warnings %}
+        <div class="toast messageToast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-danger justify-content-end">
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body bg-danger-subtle text-danger">
+                {{msg}}
+            </div>
+        </div>
+        {% endfor %}
+        {% for msg in successes %}
+        <div class="toast messageToast bg-success" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-success justify-content-end">
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body bg-success-subtle text-success">
+                {{msg}}
+            </div>
+        </div>
+        {% endfor %}
     </div>
+    <!-- Script to show toast messages -->
+    <script>
+        const messageToast = document.getElementsByClassName('messageToast')
+        for (var toast of messageToast) {
+            bootstrap.Toast.getOrCreateInstance(toast).show()
+        }
+    </script>
     {% endif %}
 </body>
 {% block 'script' %}{% endblock %}
