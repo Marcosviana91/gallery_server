@@ -1,0 +1,3 @@
+DEVICE_UUID=String
+WIFI_SSID=String
+WIFI_PASSWORD=String
