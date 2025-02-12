@@ -1,4 +1,5 @@
 # Gallery Server API for ESP32-CAM
+Projeto inspirado em https://randomnerdtutorials.com/esp32-cam-http-post-php-arduino/
 
 ## ESP32-CAM OV264O
 
@@ -15,6 +16,7 @@ O valor de DEVICE_UUID deve ser obtido ao criar um novo dispositivo no site. (_p
 Ao iniciar o dispositivo 50 imagens são capturadas e enviadas ao servidor a cada 1 segundo, após isso, outras 50 a cada 3 segundos. Por fim o dispositivo entra em estado de hibernação (deep sleep) e deve ser reiniciado para repetir o ciclo.
 
 ## Servidor
+> `docker compose up` para executar o projeto.
 - POST `/api/upload/` \
 O dispositivo envia uma imagem para a rota '__/api/upload/__' e no cabeçalho da requisição POST, uma chave '__Device-UUID__' com o valor de '_DEVICE_UUID_' salvo no arquivo  [esp32.txt](esp32.txt)
 - GET `/api/images/` \
