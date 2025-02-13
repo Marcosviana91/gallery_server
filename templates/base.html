@@ -50,34 +50,14 @@
         </ul>
     </nav>
     {% block 'body' %}{% endblock %}
-    {% if messages or warnings or successes %}
+    {% if messages %}
     <div class="toast-container position-fixed bottom-0 end-0 p-3">
         {% for msg in messages %}
-        <div class="toast messageToast bg-primary-subtle" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-header bg-primary justify-content-end">
+        <div class="toast messageToast bg-{{msg.extra_tags}}-subtle" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-{{msg.extra_tags}} justify-content-end">
                 <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>
-            <div class="toast-body text-primary">
-                {{msg}}
-            </div>
-        </div>
-        {% endfor %}
-        {% for msg in warnings %}
-        <div class="toast messageToast" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-header bg-danger justify-content-end">
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-            <div class="toast-body bg-danger-subtle text-danger">
-                {{msg}}
-            </div>
-        </div>
-        {% endfor %}
-        {% for msg in successes %}
-        <div class="toast messageToast bg-success" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-header bg-success justify-content-end">
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-            <div class="toast-body bg-success-subtle text-success">
+            <div class="toast-body text-{{msg.extra_tags}}">
                 {{msg}}
             </div>
         </div>
