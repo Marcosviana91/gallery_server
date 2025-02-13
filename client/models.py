@@ -8,8 +8,8 @@ from uuid import uuid4
 class Device(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     unique_key = models.UUIDField(null=False, blank=True)
-    description = models.TextField(null=False, blank=False)
-    shortname = models.CharField(max_length=25, blank=False, null=False)
+    description = models.TextField(null=False, blank=False, default="")
+    shortname = models.CharField(max_length=25, blank=False, null=False, default="")
     
     def save(self, *args, **kwargs):
         if not self.unique_key:
