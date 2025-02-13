@@ -7,4 +7,5 @@ urlpatterns = [
     path('', client_views.home, name="home"),
     path('user', client_views.home_user, name="home_user"),
     path('user/new', client_views.new_user, name="new_user"),
+    path('reset_password', client_views.reset_password, name="reset_password"),
 ]

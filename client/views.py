@@ -40,6 +40,23 @@ def user_logout(request: HttpRequest):
     return HttpResponseRedirect(reverse('home', args=[]))
 
 
+def reset_password(request: HttpRequest):
+    if request.method == 'GET':
+        return render(request, 'reset_password.html', {'title': 'Resetar Senha'})
+    elif request.method == 'POST':
+        warnings = []
+        username_or_email = request.POST.get('username_or_email')
+        try:
+            user = User.objects.get(username=username_or_email)
+        except User.DoesNotExist:
+            try:
+                user = User.objects.get(email=username_or_email)
+            except User.DoesNotExist:
+                warnings.append("User not found.")
+                return render(request, 'reset_password.html', {'title': 'Resetar Senha','warnings': warnings,})
+        # TODO implementar solicitação de nova senha
+        return HttpResponseRedirect(reverse('login', args=[]))
+
 @login_required(login_url='login')
 def home_user(request: HttpRequest):
     return render(request, 'user.html', {'title': 'Perfil'})
