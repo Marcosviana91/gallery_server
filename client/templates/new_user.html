@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block 'body' %}
+<main style="min-height: 90vh;" class="d-flex flex-column align-items-center justify-content-center">
+    <div class="d-flex flex-column align-items-center justify-content-center">
+        <form action="" method="post">
+            {% csrf_token %}
+            <div
+                class="d-flex flex-column align-items-center border border-black border-1 rounded-2 p-2 gap-2 bg-primary-subtle">
+                <div class="input-group">
+                    <input class="form-control border-primary-subtle" type="text" name="firstname" id="firstname" placeholder="Nome" required value="{{form.firstname}}">
+                    <input class="form-control border-primary-subtle" type="text" name="lastname" id="lastname" placeholder="Sobrenome" required value="{{form.lastname}}">
+                </div>
+                <div class="input-group">
+                    <input class="form-control border-primary-subtle" type="text" name="username" id="username" placeholder="Nome de usuário" required value="{{form.username}}">
+                </div>
+                <div class="input-group">
+                    <input class="form-control border-primary-subtle" type="text" name="email" id="email" placeholder="E-mail" required value="{{form.email}}">
+                </div>
+                <div class="input-group">
+                    <input class="form-control border-primary-subtle" type="text" name="password" id="password" placeholder="Senha" required value="{{form.password}}">
+                    <button class="input-group-text border-primary-subtle" type="button"><i class="bi bi-eye"></i></button>
+                    <input class="form-control border-primary-subtle" type="text" name="password2" id="password2"
+                        placeholder="Repita a senha" required value="{{form.password2}}">
+                </div>
+                <div class="w-100 d-flex justify-content-between gap-2">
+                    <a href="{% url 'login' %}"  class="w-25 btn btn-outline-danger" type="button">Cancelar</a>
+                    <button class="w-25 btn btn-outline-primary" type="submit">Criar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</main>
+{% endblock %}
